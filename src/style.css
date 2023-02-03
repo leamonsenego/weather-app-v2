@@ -3,6 +3,12 @@ body {
   font-weight: 300;
 }
 
+@media screen and (max-width: 780px) {
+  .units {
+    width: 200px;
+  }
+}
+
 .weather-card {
   display: block;
   max-width: 720px;
