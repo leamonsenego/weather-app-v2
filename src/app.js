@@ -55,6 +55,9 @@ function handleSubmit(event) {
   const citysearchElement = document.querySelector("#city-search");
   search(citysearchElement.value);
 }
+search("London"); // This is the city the user will see when opening the weather app
+
+const city = document.querySelector("#city");
 
 const form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
