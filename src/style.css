@@ -1,0 +1,75 @@
+body {
+  font-family: "Comfortaa", cursive;
+  font-weight: 300;
+}
+
+.weather-card {
+  display: block;
+  max-width: 720px;
+  margin: 50px auto;
+  background: #ffffff;
+  color: #3b3b3b;
+  border-radius: 16px;
+  box-shadow: 0 30px 50px rgb(65 50 100 / 8%);
+  padding: 40px;
+}
+
+h1 {
+  font-size: 30px;
+  font-weight: 400;
+  line-height: 40px;
+}
+
+li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  font-weight: 100;
+  line-height: 19px;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+.today-summary {
+  text-align: right;
+}
+
+footer {
+  text-align: center;
+  font-size: 12px;
+}
+
+.current-temp {
+  font-size: 38px;
+  font-weight: 600;
+}
+
+#overview {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.units {
+  font-size: 10px;
+  margin-left: 1px;
+  padding-top: 6px;
+}
+
+.temp-summary {
+  display: flex;
+  align-items: flex-start;
+}
+
+.search-form {
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+#condition:first-letter {
+  text-transform: capitalize;
+}
