@@ -12,8 +12,57 @@ function formatDate(timestamp) {
   let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   let day = days[date.getDay()];
   return `${day} ${hours}:${minutes}`;
+}
 
-  ////////////////////////////////////////////////////////////////// Temperature display
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  return days[day];
+}
+
+////////////////////////////////////////////////////////////// Forecast grid
+
+function displayForecast(response) {
+  console.log(response.data.daily);
+  let forecast = response.data.daily;
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHTML = ``;
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 5) {
+      forecastHTML =
+        forecastHTML +
+        `
+          <div class="day__wrapper">
+          <div class="day">${formatDay(forecastDay.time)}</div>
+          <img class="week__img" src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${
+            forecastDay.condition.icon
+          }.png" alt="">
+          <div class="degrees">
+              <span class="degrees__max"> ${Math.round(
+                forecastDay.temperature.maximum
+              )}°/</span>
+              <span class="degrees__min">${Math.round(
+                forecastDay.temperature.minimum
+              )}°</span>
+          </div>
+          </div>
+        `;
+    }
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
+////////////////////////////////////////////////////////////////// Temperature display
+
+function getForecast(city) {
+  console.log(city);
+  let apiKey = "d6403tbfa60o96cf1f1e80b04d30a39a";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
+  console.log(apiUrl);
+  axios.get(apiUrl).then(displayForecast);
 }
 
 function displayTemperature(response) {
@@ -38,6 +87,8 @@ function displayTemperature(response) {
   humidityElement.innerHTML = response.data.temperature.humidity;
   windElement.innerHTML = Math.round(response.data.wind.speed);
   dateElement.innerHTML = formatDate(response.data.time * 1000);
+
+  getForecast(response.data.city);
 }
 
 let condition = "";
@@ -55,10 +106,10 @@ function handleSubmit(event) {
   const citysearchElement = document.querySelector("#city-search");
   search(citysearchElement.value);
 }
-search("London"); // This is the city the user will see when opening the weather app
+
+search("Toulouse"); // This is the city the user will see when opening the weather app
 
 const city = document.querySelector("#city");
-
 const form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
 
