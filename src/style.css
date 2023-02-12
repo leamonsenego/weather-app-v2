@@ -95,6 +95,7 @@ footer {
 
 div#forecast.weather-forecast {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
 }
 
