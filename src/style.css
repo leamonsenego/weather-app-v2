@@ -1,6 +1,7 @@
 body {
   font-family: "Comfortaa", cursive;
   font-weight: 300;
+  background: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
 }
 
 @media screen and (max-width: 780px) {
@@ -79,3 +80,21 @@ footer {
 #condition:first-letter {
   text-transform: capitalize;
 }
+
+.weather-forecast {
+  margin-top: 12px;
+  text-align: center;
+}
+.weather-forecast-date {
+  font-size: 18px;
+}
+
+.weather-forecast-temperature {
+  font-size: 14px;
+}
+
+div#forecast.weather-forecast {
+  display: flex;
+  justify-content: space-around;
+}
+
